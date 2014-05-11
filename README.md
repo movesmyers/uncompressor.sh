@@ -4,8 +4,8 @@ uncompress files without having to remember arguments.
 ## Installation
 
 ```sh
-$ git clone https://github.com/movesmyers/uncompressor.sh.git /tmp/release
-$ make -C /tmp/release install
+$ git clone https://github.com/movesmyers/uncompressor.sh.git /tmp/uncompressor
+$ make -C /tmp/uncompressor install
 ```
 
 ## Usage

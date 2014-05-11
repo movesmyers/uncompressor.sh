@@ -5,13 +5,13 @@ uncompress files without having to remember arguments.
 
 ```sh
 $ git clone https://github.com/movesmyers/uncompressor.sh.git /tmp/uncompressor
-$ make -C /tmp/uncompressor install
+$ [sudo] make -C /tmp/uncompressor install
 ```
 
 ## Usage
 
 ```sh
-uncompressor [--help] file [extraction directory]
+$ uncompressor [--help] file [extraction directory]
 ```
 
 uncompressable file extensions:

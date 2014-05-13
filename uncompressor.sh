@@ -7,7 +7,7 @@
 # MIT licensed
 #
 
-VERSION="0.0.1"
+VERSION="0.0.2"
 
 function usage {
   echo "
@@ -59,7 +59,7 @@ else
       DIR="$2"
     else
       echo "'$2' does not exist."
-      echo "setting output directory to `pwd`."
+      echo "Setting output directory to `pwd`."
       DIR=`pwd`
     fi
   else
@@ -73,7 +73,7 @@ else
   if [ "$CMD" == "unzip" ]; then
     UNZIP=`which unzip`
     if [ -z "$UNZIP" ]; then
-      echo "Cannot find 'unzip' binary, exiting."
+      echo "Could not find 'unzip' binary, exiting."
       exit
     else
       echo "Unzipping '$FILE' to '$DIR'..."
@@ -82,7 +82,7 @@ else
   elif [ "$CMD" == "tar" ]; then
     TAR=`which tar`
     if [ -z "$TAR" ]; then
-      echo "Cannot find 'tar' binary, exiting."
+      echo "Could not find 'tar' binary, exiting."
       exit
     else
       echo "Untarring '$FILE' to '$DIR'..."

@@ -13,7 +13,7 @@ function usage {
   echo "
     uncompressor version $VERSION
     Usage: uncompressor [--help] file [extraction directory]
-    
+
     uncompressable file extensions:
       .zip
       .tar
@@ -21,8 +21,8 @@ function usage {
       .tgz
       .tar.bz2
       .tbz
-    
-    If no directory is specified on the command line, 
+
+    If no directory is specified on the command line,
     files will be extracted into your current directory.
     "
   exit
@@ -44,7 +44,7 @@ function parse () {
   fi
   if [ -z "$CMD" ]; then
     echo "Could not determine how to uncompress '$FILE', exiting."
-    exit
+    exit 1
   fi
 }
 
@@ -65,16 +65,16 @@ else
   else
     DIR=`pwd`
   fi
-  
+
   # parse filename to determine the command and options
   parse $FILE
-  
+
   # the work
   if [ "$CMD" == "unzip" ]; then
     UNZIP=`which unzip`
     if [ -z "$UNZIP" ]; then
       echo "Could not find 'unzip' binary, exiting."
-      exit
+      exit 1
     else
       echo "Unzipping '$FILE' to '$DIR'..."
       $UNZIP $FILE -d $DIR
@@ -83,7 +83,7 @@ else
     TAR=`which tar`
     if [ -z "$TAR" ]; then
       echo "Could not find 'tar' binary, exiting."
-      exit
+      exit 1
     else
       echo "Untarring '$FILE' to '$DIR'..."
       $TAR xv$OPTS -f $FILE -C $DIR

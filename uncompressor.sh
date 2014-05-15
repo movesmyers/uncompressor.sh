@@ -71,22 +71,18 @@ else
 
   # the work
   if [ "$CMD" == "unzip" ]; then
-    UNZIP=`which unzip`
-    if [ -z "$UNZIP" ]; then
-      echo "Could not find 'unzip' binary, exiting."
+    type unzip > /dev/null 2>&1 || {
+      echo >&2 "Could not find 'unzip' binary, exiting."
       exit 1
-    else
-      echo "Unzipping '$FILE' to '$DIR'..."
-      $UNZIP $FILE -d $DIR
-    fi
+    }
+    echo "Unzipping '$FILE' to '$DIR'..."
+    unzip $FILE -d $DIR
   elif [ "$CMD" == "tar" ]; then
-    TAR=`which tar`
-    if [ -z "$TAR" ]; then
-      echo "Could not find 'tar' binary, exiting."
+    type tar > /dev/null 2>&1 || {
+      echo >&2 "Could not find 'tar' binary, exiting."
       exit 1
-    else
-      echo "Untarring '$FILE' to '$DIR'..."
-      $TAR xv$OPTS -f $FILE -C $DIR
-    fi
+    }
+    echo "Untarring '$FILE' to '$DIR'..."
+    tar xv$OPTS -f $FILE -C $DIR
   fi
 fi

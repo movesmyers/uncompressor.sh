@@ -7,7 +7,7 @@
 # MIT licensed
 #
 
-VERSION="0.0.2"
+VERSION="0.0.3"
 
 function usage {
   echo "
@@ -21,9 +21,12 @@ function usage {
       .tgz
       .tar.bz2
       .tbz
-
-    If no directory is specified on the command line,
-    files will be extracted into your current directory.
+    
+    If an extraction directory is specified and does not exist, uncompressor 
+    will attempt to create it for you. 
+    
+    If no directory is specified on the command line or the directory cannot be 
+    created, files will be extracted into your current directory.
     "
   exit
 }
@@ -58,9 +61,14 @@ else
     if [ -d "$2" ]; then
       DIR="$2"
     else
-      echo "'$2' does not exist."
-      echo "Setting output directory to `pwd`."
-      DIR=`pwd`
+      mkdir -p "$2"
+      if [ $? -eq 1 ]; then
+        echo "Setting output directory to `pwd`"
+        DIR=`pwd`
+      else
+        echo "Created '$2'"
+        DIR="$2"
+      fi
     fi
   else
     DIR=`pwd`

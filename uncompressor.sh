@@ -23,10 +23,9 @@ function usage {
       .tbz
     
     If an extraction directory is specified and does not exist, uncompressor 
-    will attempt to create it for you. 
-    
-    If no directory is specified on the command line or the directory cannot be 
-    created, files will be extracted into your current directory.
+    will attempt to create it for you. If no directory is specified or the 
+    directory cannot be created, files will be extracted into your current 
+    working directory.
     "
   exit
 }

@@ -30,7 +30,7 @@ function usage {
   exit
 }
 
-function parse () {
+function parse_filename () {
   FILE="$1"
   EXT="${FILE##*.}"
   if [ "$EXT" == "zip" ]; then
@@ -74,7 +74,7 @@ else
   fi
 
   # parse filename to determine the command and options
-  parse $FILE
+  parse_filename $FILE
 
   # the work
   if [ "$CMD" == "unzip" ]; then

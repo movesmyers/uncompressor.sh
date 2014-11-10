@@ -7,12 +7,12 @@
 # MIT licensed
 #
 
-VERSION="0.0.3"
+VERSION="0.0.4"
 
 function usage {
   echo "
     uncompressor version $VERSION
-    Usage: uncompressor [--help] file [extraction directory]
+    Usage: uncompressor [--help, --remove] file [extraction directory]
 
     uncompressable file extensions:
       .zip
@@ -21,11 +21,17 @@ function usage {
       .tgz
       .tar.bz2
       .tbz
-    
-    If an extraction directory is specified and does not exist, uncompressor 
-    will attempt to create it for you. If no directory is specified or the 
-    directory cannot be created, files will be extracted into your current 
+
+    If an extraction directory is specified and does not exist, uncompressor
+    will attempt to create it for you. If no directory is specified or the
+    directory cannot be created, files will be extracted into your current
     working directory.
+
+    Additional options are as follows:
+
+      --help      Print this text.
+      --remove    Remove the original file (without prompting) after successful 
+                  decompression.
     "
   exit
 }
@@ -55,6 +61,10 @@ function parse_filename () {
 if [ "$#" -lt "1" ] || [ "$1" == "--help" ]; then
   usage
 else
+  if [ "$1" == "--remove" ]; then
+    SHOULD_REMOVE=1
+    shift
+  fi
   FILE="$1"
   if [ "$#" -eq "2" ]; then
     if [ -d "$2" ]; then
@@ -92,4 +102,10 @@ else
     echo "Untarring '$FILE' to '$DIR'..."
     tar xv$OPTS -f $FILE -C $DIR
   fi
+  
+  if [ $SHOULD_REMOVE ]; then
+    echo "Removing '$FILE'"
+    rm $FILE 
+  fi
+
 fi

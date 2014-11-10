@@ -11,7 +11,7 @@ $ [sudo] make -C /tmp/uncompressor install
 ## Usage
 
 ```sh
-$ uncompressor [--help] file [extraction directory]
+$ uncompressor [--help, --remove] file [extraction directory]
 ```
 
 uncompressable file extensions:
@@ -24,6 +24,8 @@ uncompressable file extensions:
 
 If no directory is specified on the command line, 
 files will be extracted into your current directory.
+
+The ```--remove``` switch removes the original file (without prompting) after successful decompression. 
 
 ## License 
 

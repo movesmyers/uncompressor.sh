@@ -1,3 +1,8 @@
+0.0.4 / 2014-11-09
+==================
+
+ * Add "--remove" option to remove original file after successful decompression.
+
 0.0.3 / 2014-05-15
 ==================
 

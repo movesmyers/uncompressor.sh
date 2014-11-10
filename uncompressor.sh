@@ -103,7 +103,7 @@ else
     tar xv$OPTS -f $FILE -C $DIR
   fi
   
-  if [ $SHOULD_REMOVE ]; then
+  if [ $SHOULD_REMOVE ] && [ $? -eq "0" ]; then
     echo "Removing '$FILE'"
     rm $FILE 
   fi

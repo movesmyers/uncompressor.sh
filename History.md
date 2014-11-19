@@ -1,3 +1,8 @@
+0.0.5 / 2014-11-19
+==================
+
+  * Fix "/usr/local/bin/uncompressor: function: not found" error by using bash instead of sh. 
+
 0.0.4 / 2014-11-09
 ==================
 

@@ -31,7 +31,7 @@ The ```--remove``` switch removes the original file (without prompting) after su
 
 (The MIT License)
 
-Copyright (c) 2013 Richard Myers &lt;rick.myers@me.com&gt;
+Copyright (c) 2017 Richard Myers &lt;rick@richardmyers.me&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
